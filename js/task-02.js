@@ -4,24 +4,28 @@ const users = [
   { name: "Ajax", active: true },
   { name: "Lux", active: false },
 ];
-const promises = users.map(toggleUserState);
+// const promises = users.map(toggleUserState);
 
-function toggleUserState(userName) {
-  const updatedUsers = users.map((user) =>
-    user.name === userName ? { ...user, active: !user.active } : user
-  );
-  return new Promise((resolve) => {
-    resolve(updatedUsers);
-  });
-}
-
-// const toggleUserState = (userName) => {
-//   return new Promise((resolve, reject) => {
-//     user.name === userName
-//       ? resolve({ ...user, active: !user.active })
-//       : reject(user);
+// function toggleUserState(userName) {
+//   const updatedUsers = users.map((user) =>
+//     user.name === userName ? { ...user, active: !user.active } : user
+//   );
+//   return new Promise((resolve) => {
+//     resolve(updatedUsers);
 //   });
-// };
+// }
+
+const toggleUserState = (allUsers, userName) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const updatedUsers = allUsers.map((user) =>
+        user.name === userName ? { ...user, active: !user.active } : user
+      );
+
+      resolve(updatedUsers);
+    }, 50);
+  });
+};
 // const updatedUsers = users.map((user) => toggleUserState);
 
 // const toggleUserState = (allUsers, userName, callback) => {
